@@ -1,7 +1,7 @@
 import { createClient } from '@deepgram/sdk';
 
 const deepgramApiKey = process.env.NEXT_PUBLIC_DEEPGRAM_API_KEY;
-const deepgram = new Deepgram(deepgramApiKey);
+const deepgram = new createClient(deepgramApiKey);
 
 export async function transcribeAudio(file) {
   try {
