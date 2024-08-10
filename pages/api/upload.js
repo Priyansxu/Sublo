@@ -9,7 +9,7 @@ export const config = {
   },
 };
 
-const deepgram = new Deepgram(process.env.NEXT_PUBLIC_DEEPGRAM_API_KEY);
+const deepgram = new Deepgram('fdc11726684460f94e4b76c5739bc991a9f53d46');
 
 export default async (req, res) => {
   if (req.method !== 'POST') {
