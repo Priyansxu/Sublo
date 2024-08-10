@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Upload, Play } from 'lucide-react';
-import { generateSubtitles } from '../generateSubtitles';
+import { generateSubtitles } from '@utlis/generateSubtitles';
 import ColorSelector from './ColorSelector';
 import SizeSelector from './SizeSelector';
 
