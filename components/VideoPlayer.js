@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Upload, Play } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { generateSubtitles } from '../generateSubtitles';
 import ColorSelector from './ColorSelector';
 import SizeSelector from './SizeSelector';
 
@@ -8,27 +8,24 @@ export default function VideoPlayer() {
   const [videoSrc, setVideoSrc] = useState(null);
   const [textColor, setTextColor] = useState('#ffffff');
   const [borderColor, setBorderColor] = useState('#000000');
-  const [textSize, setTextSize] = useState(16);
+  const [textSize, setTextSize] = useState(24);
   const [subtitles, setSubtitles] = useState([]);
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentSubtitle, setCurrentSubtitle] = useState('');
 
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     const file = event.target.files?.[0];
     if (file) {
       const url = URL.createObjectURL(file);
       setVideoSrc(url);
+
+      // Generate subtitles using Deepgram
+      const generatedSubtitles = await generateSubtitles(file);
+      setSubtitles(generatedSubtitles);
     }
   };
-
-  useEffect(() => {
-    if (!videoSrc) return;
-
-    // Mock subtitle generation
-    setSubtitles(['Hey', 'guys,', "I'm", 'Priyanshu', 'Gupta']);
-  }, [videoSrc]);
 
   useEffect(() => {
     if (!videoRef.current || !canvasRef.current) return;
@@ -44,26 +41,36 @@ export default function VideoPlayer() {
       ctx.font = `${textSize}px Arial`;
       ctx.fillStyle = textColor;
       ctx.strokeStyle = borderColor;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
 
-      const word = subtitles[currentWordIndex];
-      if (word) {
-        ctx.fillText(word, 50, canvasElement.height - 50);
-        ctx.strokeText(word, 50, canvasElement.height - 50);
+      const x = canvasElement.width / 2;
+      const y = canvasElement.height - 40; // 40px above the bottom edge
+
+      if (currentSubtitle) {
+        ctx.fillText(currentSubtitle, x, y);
+        ctx.strokeText(currentSubtitle, x, y);
       }
     };
 
     const syncSubtitlesWithVideo = () => {
-      const currentTime = Math.floor(videoElement.currentTime);
-      setCurrentWordIndex(currentTime % subtitles.length);
+      const currentTime = videoElement.currentTime;
+      const subtitle = subtitles.find((sub) => currentTime >= sub.startTime && currentTime <= sub.endTime);
+      if (subtitle) {
+        setCurrentSubtitle(subtitle.text);
+      } else {
+        setCurrentSubtitle('');
+      }
     };
 
     videoElement.addEventListener('timeupdate', syncSubtitlesWithVideo);
-    renderSubtitles();
+    const intervalId = setInterval(renderSubtitles, 100);
 
     return () => {
       videoElement.removeEventListener('timeupdate', syncSubtitlesWithVideo);
+      clearInterval(intervalId);
     };
-  }, [textColor, borderColor, textSize, subtitles, currentWordIndex]);
+  }, [textColor, borderColor, textSize, subtitles, currentSubtitle]);
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-4">
