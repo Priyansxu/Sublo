@@ -13,4 +13,12 @@ export default function ColorSelector({ label, value, onChange }) {
       <label className="block text-lg font-medium mb-2">
         {label}
       </label>
-      <div className="
+      <input
+        type="color"
+        value={value}
+        onChange={handleChange}
+        className="w-full h-10 p-2 border rounded-lg"
+      />
+    </div>
+  );
+}
