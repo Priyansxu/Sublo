@@ -9,89 +9,76 @@ import {
 
 export default function Component() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-r from-purple-200 via-pink-100 to-white">
-      <header className="flex justify-between items-center p-4 bg-gradient-to-r from-pink-500 to-pink-700 text-white">
-        <h1 className="text-3xl font-bold tracking-tighter">QUIN TECH</h1>
-        <nav className="hidden md:flex space-x-6">
-          <button className="bg-pink-700 px-4 py-2 rounded text-white">Home</button>
-          <button className="px-4 py-2 rounded text-white">Services</button>
-          <button className="px-4 py-2 rounded text-white">Projects</button>
-          <button className="px-4 py-2 rounded text-white">About Us</button>
-        </nav>
-        <div className="flex space-x-2">
-          <button className="border border-white px-4 py-2 rounded text-white">Contact Us</button>
-          <button className="bg-white px-4 py-2 rounded text-pink-700">Login</button>
-        </div>
-      </header>
+    <div className="bg-white min-h-screen flex flex-col">
+      <div className="flex-grow relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 bottom-0 bg-[#f3e3f6] rounded-br-[100px]"></div>
+        <div className="relative z-10">
+          <header className="flex justify-between items-center p-6">
+            <div className="text-2xl font-bold tracking-tighter rotate-90">QUIN TECH</div>
+            <nav className="flex space-x-4">
+              <button className="px-4 py-2 bg-[#ff3fa0] text-white rounded-full">Home</button>
+              <button className="px-4 py-2">Services</button>
+              <button className="px-4 py-2">Projects</button>
+              <button className="px-4 py-2">About Us</button>
+            </nav>
+            <div className="flex space-x-2">
+              <button className="px-4 py-2 bg-white rounded-full">Contact Us</button>
+              <button className="px-4 py-2 bg-[#ff3fa0] text-white rounded-full">Login</button>
+            </div>
+          </header>
 
-      <main className="flex-grow p-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="space-y-6">
-            <h2 className="text-6xl font-bold text-pink-600">W98K6R</h2>
-            <p className="text-gray-800">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <div className="flex items-center space-x-2">
-              <div className="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                KNOW MORE
+          <main className="flex mt-8 px-6">
+            <div className="w-1/2 pr-8">
+              <h1 className="text-7xl font-bold text-[#ff3fa0] mb-4">W98K6R</h1>
+              <p className="text-gray-600 mb-6">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+              <div className="flex items-center space-x-4 mb-6">
+                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center text-white text-xs text-center">
+                  24/7<br/>SUPPORT
+                </div>
               </div>
+              <button className="flex items-center space-x-2 px-6 py-3 bg-gray-200 rounded-full text-gray-800">
+                Let's understand the technology better
+                <ArrowRightIcon className="w-4 h-4 ml-2" />
+              </button>
             </div>
-            <button className="bg-gray-200 text-gray-800 flex items-center mt-4 px-4 py-2 rounded">
-              Let's understand the technology better
-              <ArrowRightIcon className="ml-2 h-4 w-4" />
-            </button>
-          </div>
-          <div className="relative">
-            <img
-              src="/path-to-your-image.png"
-              alt="Futuristic head illustration"
-              className="w-full h-auto"
-            />
-          </div>
-        </div>
+            <div className="w-1/2 relative">
+              <img src="/placeholder.svg?height=500&width=500" alt="Futuristic head illustration" className="w-full h-auto" />
+            </div>
+          </main>
 
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="p-6 bg-white shadow-md rounded">
-            <h3 className="text-3xl font-bold text-pink-600">100K+</h3>
-            <p className="text-sm text-gray-700 mt-2">
-              Risus commodo viverra maecenas accumsan lacus
-            </p>
-          </div>
-          <div className="p-6 bg-white shadow-md rounded">
-            <h3 className="text-2xl font-bold">WHAT WE DO</h3>
-            <p className="text-sm text-gray-700 mt-2">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-          </div>
-          <div className="p-6 bg-white shadow-md rounded flex items-center space-x-4">
-            <div className="flex-shrink-0">
-              <img
-                src="/path-to-your-team-image.png"
-                alt="Team"
-                className="w-16 h-16 rounded-full"
-              />
+          <div className="flex space-x-4 mt-8 px-6">
+            <div className="bg-white rounded-3xl p-6 flex-1">
+              <h3 className="text-3xl font-bold text-[#ff3fa0]">100K+</h3>
+              <p className="text-sm text-gray-600">Risus commodo viverra maec enas accumsan lacus</p>
             </div>
-            <div>
+            <div className="bg-white rounded-3xl p-6 flex-1">
+              <h3 className="text-xl font-bold mb-2">WHAT WE DO</h3>
+              <p className="text-sm text-gray-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </p>
+            </div>
+            <div className="bg-white rounded-3xl p-6 flex-1 flex items-center space-x-4">
+              <img src="/placeholder.svg?height=50&width=50" alt="Team" className="w-12 h-12 rounded-full" />
               <p className="font-semibold">Connect with our experts</p>
             </div>
           </div>
         </div>
-      </main>
+      </div>
 
-      <footer className="bg-gray-100 p-6">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <div>
-            <h3 className="font-semibold text-gray-800">FOLLOW US</h3>
-            <p className="text-sm text-gray-600 max-w-xs">
-              By reaching out to connect with us, you're taking the first step toward the peace of what the future could be.
-            </p>
-          </div>
-          <div className="flex space-x-4">
-            <FacebookIcon className="h-6 w-6 text-gray-800" />
-            <TwitterIcon className="h-6 w-6 text-gray-800" />
-            <InstagramIcon className="h-6 w-6 text-gray-800" />
-            <YoutubeIcon className="h-6 w-6 text-gray-800" />
-          </div>
+      <footer className="bg-white p-6 flex justify-between items-center">
+        <div>
+          <h3 className="font-semibold mb-2">FOLLOW US</h3>
+          <p className="text-sm text-gray-600 max-w-xs">
+            By reaching out to connect with us, you're taking the first step toward the peace of what the future could be
+          </p>
+        </div>
+        <div className="flex space-x-4">
+          <FacebookIcon className="w-8 h-8 text-gray-600" />
+          <TwitterIcon className="w-8 h-8 text-gray-600" />
+          <InstagramIcon className="w-8 h-8 text-gray-600" />
+          <YoutubeIcon className="w-8 h-8 text-gray-600" />
         </div>
       </footer>
     </div>
