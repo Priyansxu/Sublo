@@ -1,4 +1,4 @@
-import Deepgram from '@deepgram/sdk';
+import { createClient } from '@deepgram/sdk';
 
 const deepgramApiKey = process.env.NEXT_PUBLIC_DEEPGRAM_API_KEY;
 const deepgram = new Deepgram(deepgramApiKey);
