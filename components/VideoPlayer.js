@@ -35,6 +35,12 @@ export default function VideoPlayer() {
     const canvasElement = canvasRef.current;
     const ctx = canvasElement.getContext('2d');
 
+    // Match canvas size to video size
+    const updateCanvasSize = () => {
+      canvasElement.width = videoElement.videoWidth;
+      canvasElement.height = videoElement.videoHeight;
+    };
+
     const renderSubtitles = () => {
       if (!ctx || !canvasElement) return;
 
@@ -64,10 +70,12 @@ export default function VideoPlayer() {
       }
     };
 
+    videoElement.addEventListener('loadedmetadata', updateCanvasSize);
     videoElement.addEventListener('timeupdate', syncSubtitlesWithVideo);
     const intervalId = setInterval(renderSubtitles, 100);
 
     return () => {
+      videoElement.removeEventListener('loadedmetadata', updateCanvasSize);
       videoElement.removeEventListener('timeupdate', syncSubtitlesWithVideo);
       clearInterval(intervalId);
     };
