@@ -14,7 +14,7 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "deepgram": "latest"
+    "@deepgram/sdk": "latest"
   },
   "devDependencies": {
     "autoprefixer": "latest",
@@ -24,3 +24,4 @@
     "tailwindcss": "latest"
   }
 }
+ 
