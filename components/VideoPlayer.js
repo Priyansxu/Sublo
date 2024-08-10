@@ -35,7 +35,7 @@ export default function VideoPlayer() {
     const ctx = canvasElement.getContext('2d');
 
     const renderSubtitles = () => {
-      if (!ctx) return;
+      if (!ctx || !canvasElement) return;
 
       ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
       ctx.font = `${textSize}px Arial`;
@@ -45,7 +45,7 @@ export default function VideoPlayer() {
       ctx.textBaseline = 'bottom';
 
       const x = canvasElement.width / 2;
-      const y = canvasElement.height - 40; // 40px above the bottom edge
+      const y = canvasElement.height - 40; // Adjust this value to move the text higher or lower
 
       if (currentSubtitle) {
         ctx.fillText(currentSubtitle, x, y);
