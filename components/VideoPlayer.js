@@ -11,6 +11,7 @@ export default function VideoPlayer() {
   const [textSize, setTextSize] = useState(24);
   const [subtitles, setSubtitles] = useState([]);
   const [currentSubtitle, setCurrentSubtitle] = useState('');
+  const [error, setError] = useState('');  // State to capture and display errors
 
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -18,13 +19,18 @@ export default function VideoPlayer() {
   const handleFileChange = async (event) => {
     const file = event.target.files?.[0];
     if (file) {
-      const url = URL.createObjectURL(file);
-      setVideoSrc(url);
-      console.log("Video URL set: ", url);
+      try {
+        const url = URL.createObjectURL(file);
+        setVideoSrc(url);
+        console.log("Video URL set: ", url);
 
-      const generatedSubtitles = await generateSubtitles(file);
-      console.log("Generated Subtitles: ", generatedSubtitles);
-      setSubtitles(generatedSubtitles);
+        const generatedSubtitles = await generateSubtitles(file);
+        console.log("Generated Subtitles: ", generatedSubtitles);
+        setSubtitles(generatedSubtitles);
+      } catch (err) {
+        console.error("Error generating subtitles:", err);
+        setError(`Error generating subtitles: ${err.message}`);
+      }
     }
   };
 
@@ -35,7 +41,6 @@ export default function VideoPlayer() {
     const canvasElement = canvasRef.current;
     const ctx = canvasElement.getContext('2d');
 
-    // Match canvas size to video size
     const updateCanvasSize = () => {
       canvasElement.width = videoElement.videoWidth;
       canvasElement.height = videoElement.videoHeight;
@@ -52,7 +57,7 @@ export default function VideoPlayer() {
       ctx.textBaseline = 'bottom';
 
       const x = canvasElement.width / 2;
-      const y = canvasElement.height - 40; // Adjust this value to move the text higher or lower
+      const y = canvasElement.height - 40;
 
       if (currentSubtitle) {
         ctx.fillText(currentSubtitle, x, y);
@@ -117,6 +122,13 @@ export default function VideoPlayer() {
           <Play className="mr-2" />
           Generate Subtitles
         </button>
+
+        {/* Error Display Section */}
+        {error && (
+          <div className="mt-4 p-4 bg-red-100 text-red-800 rounded-lg">
+            <strong>Error:</strong> {error}
+          </div>
+        )}
       </div>
     </div>
   );
