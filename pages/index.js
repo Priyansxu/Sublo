@@ -2,13 +2,13 @@ import { useState } from 'react';
 
 export default function Home() {
   const [file, setFile] = useState(null);
-  const [subtitle, setSubtitle] = useState('');
+  const [transcript, setTranscript] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
-    setSubtitle(''); // Clear previous subtitle
+    setTranscript(''); // Clear previous transcript
     setError(''); // Clear previous error
   };
 
@@ -31,7 +31,7 @@ export default function Home() {
       });
 
       if (!res.ok) {
-        throw new Error('Failed to generate subtitle. Please try again.');
+        throw new Error('Failed to generate transcription. Please try again.');
       }
 
       const data = await res.json();
@@ -39,7 +39,7 @@ export default function Home() {
         throw new Error(data.error);
       }
 
-      setSubtitle(data.subtitle);
+      setTranscript(data.subtitle);
     } catch (err) {
       setError(err.message || 'An unexpected error occurred.');
     } finally {
@@ -49,13 +49,13 @@ export default function Home() {
 
   return (
     <div className="container">
-      <h1>Video Subtitle Generator</h1>
+      <h1>Video Transcription Service</h1>
       <form onSubmit={handleSubmit}>
         <input type="file" onChange={handleFileChange} accept="video/mp4" />
         <button type="submit">Upload Video</button>
       </form>
-      {loading && <p>Generating subtitle...</p>}
-      {subtitle && <p>Subtitle: {subtitle}</p>}
+      {loading && <p>Generating transcription...</p>}
+      {transcript && <div><h2>Transcript:</h2><p>{transcript}</p></div>}
       {error && <p style={{ color: 'red' }}>Error: {error}</p>}
     </div>
   );
