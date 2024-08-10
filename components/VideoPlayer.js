@@ -20,9 +20,10 @@ export default function VideoPlayer() {
     if (file) {
       const url = URL.createObjectURL(file);
       setVideoSrc(url);
+      console.log("Video URL set: ", url);
 
-      // Generate subtitles using Deepgram
       const generatedSubtitles = await generateSubtitles(file);
+      console.log("Generated Subtitles: ", generatedSubtitles);
       setSubtitles(generatedSubtitles);
     }
   };
@@ -76,7 +77,7 @@ export default function VideoPlayer() {
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-4">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-8 text-center">Video Subtitle Generator</h1>
-        
+
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
           {!videoSrc ? (
             <label htmlFor="video-upload" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
@@ -103,7 +104,7 @@ export default function VideoPlayer() {
             <SizeSelector label="Text Size" value={textSize} onChange={setTextSize} />
           </div>
         </div>
-        
+
         <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center text-lg">
           <Play className="mr-2" />
           Generate Subtitles
