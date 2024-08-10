@@ -4,16 +4,23 @@ export default function Home() {
   const [file, setFile] = useState(null);
   const [subtitle, setSubtitle] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
+    setSubtitle(''); // Clear previous subtitle
+    setError(''); // Clear previous error
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!file) return;
+    if (!file) {
+      setError('Please select a video file.');
+      return;
+    }
 
     setLoading(true);
+    setError('');
     const formData = new FormData();
     formData.append('file', file);
 
@@ -22,10 +29,19 @@ export default function Home() {
         method: 'POST',
         body: formData,
       });
+
+      if (!res.ok) {
+        throw new Error('Failed to generate subtitle. Please try again.');
+      }
+
       const data = await res.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
       setSubtitle(data.subtitle);
     } catch (err) {
-      console.error('Error:', err);
+      setError(err.message || 'An unexpected error occurred.');
     } finally {
       setLoading(false);
     }
@@ -40,6 +56,7 @@ export default function Home() {
       </form>
       {loading && <p>Generating subtitle...</p>}
       {subtitle && <p>Subtitle: {subtitle}</p>}
+      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
     </div>
   );
 }
