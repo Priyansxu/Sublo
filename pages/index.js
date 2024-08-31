@@ -1,121 +1,38 @@
-import React from "react";
-import {
-  ArrowRightIcon,
-  FacebookIcon,
-  InstagramIcon,
-  TwitterIcon,
-  YoutubeIcon,
-} from "lucide-react";
+"use client";
+import { Download, Github, Figma, Heart } from "lucide-react";
 
-export default function Component() {
-  return (
-    <div className="bg-white min-h-screen flex flex-col">
-      <div className="flex-grow relative overflow-hidden">
-        {/* Background shape */}
-        <div className="absolute top-0 left-0 right-0 bottom-0 bg-[#f3e3f6] rounded-br-[100px]"></div>
-        
-        <div className="relative z-10">
-          {/* Header */}
-          <header className="flex justify-between items-center p-6">
-            <div className="text-2xl font-bold tracking-tighter transform -rotate-90">
-              QUIN TECH
-            </div>
-            <nav className="flex space-x-4">
-              <button className="px-4 py-2 bg-[#ff3fa0] text-white rounded-full">
-                Home
-              </button>
-              <button className="px-4 py-2">Services</button>
-              <button className="px-4 py-2">Projects</button>
-              <button className="px-4 py-2">About Us</button>
-            </nav>
-            <div className="flex space-x-2">
-              <button className="px-4 py-2 bg-white rounded-full">
-                Contact Us
-              </button>
-              <button className="px-4 py-2 bg-[#ff3fa0] text-white rounded-full">
-                Login
-              </button>
-            </div>
-          </header>
-
-          {/* Main Content */}
-          <main className="flex mt-8 px-6">
-            <div className="w-full md:w-1/2 pr-8">
-              <h1 className="text-7xl font-bold text-[#ff3fa0] mb-4">
-                W98K6R
-              </h1>
-              <p className="text-gray-600 mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </p>
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center text-white text-xs text-center">
-                  24/7
-                  <br />
-                  SUPPORT
+export default function Header() {
+    return (
+        <header className="bg-gradient-to-b from-indigo-100 to-white py-20">
+            <div className="flex justify-center mb-6">
+                <div className="w-16 h-16 rounded-full bg-white p-2 shadow-lg flex items-center justify-center">
+                    <Heart className="text-purple-600 w-10 h-10" />
                 </div>
-              </div>
-              <button className="flex items-center space-x-2 px-6 py-3 bg-gray-200 rounded-full text-gray-800">
-                Let's understand the technology better
-                <ArrowRightIcon className="w-4 h-4 ml-2" />
-              </button>
             </div>
-            <div className="w-full md:w-1/2 relative">
-              <img
-                src="/placeholder.svg?height=500&width=500"
-                alt="Futuristic head illustration"
-                className="w-full h-auto"
-              />
-            </div>
-          </main>
 
-          {/* Info Cards */}
-          <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mt-8 px-6">
-            <div className="bg-white rounded-3xl p-6 flex-1">
-              <h3 className="text-3xl font-bold text-[#ff3fa0]">100K+</h3>
-              <p className="text-sm text-gray-600">
-                Risus commodo viverra maec enas accumsan lacus
-              </p>
-            </div>
-            <div className="bg-white rounded-3xl p-6 flex-1">
-              <h3 className="text-xl font-bold mb-2">WHAT WE DO</h3>
-              <p className="text-sm text-gray-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut
-              </p>
-            </div>
-            <div className="bg-white rounded-3xl p-6 flex-1 flex items-center space-x-4">
-              <img
-                src="/placeholder.svg?height=50&width=50"
-                alt="Team"
-                className="w-12 h-12 rounded-full"
-              />
-              <p className="font-semibold">Connect with our experts</p>
-            </div>
-          </div>
-        </div>
-      </div>
+            <div className="container mx-auto text-center px-6">
+                <h3 className="text-blue-600 text-xl font-medium mb-3">
+                    25+ free logos for personal and commercial use
+                </h3>
+                <h1 className="text-4xl font-bold text-gray-900 mb-8">
+                    Free Professional Logo Placeholders
+                </h1>
 
-      {/* Footer */}
-      <footer className="bg-white p-6 flex justify-between items-center">
-        <div>
-          <h3 className="font-semibold mb-2">FOLLOW US</h3>
-          <p className="text-sm text-gray-600 max-w-xs">
-            By reaching out to connect with us, you're taking the first step
-            toward the peace of what the future could be.
-          </p>
-        </div>
-        <div className="flex space-x-4">
-          <FacebookIcon className="w-8 h-8 text-gray-600" />
-          <TwitterIcon className="w-8 h-8 text-gray-600" />
-          <InstagramIcon className="w-8 h-8 text-gray-600" />
-          <YoutubeIcon className="w-8 h-8 text-gray-600" />
-        </div>
-      </footer>
-    </div>
-  );
+                <div className="flex flex-col space-y-4 items-center">
+                    <a href="https://www.figma.com/community/plugin/1120667703468196103"
+                        className="flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg shadow-[4px_4px_0px_#1e40af] hover:shadow-[2px_2px_0px_#1e40af] transition transform hover:-translate-y-1">
+                        <Figma className="mr-2" /> Figma plugin
+                    </a>
+                    <a href="https://s.vjy.me/uilogos-v1" download="uilogos-v2.0.zip"
+                        className="flex items-center bg-white text-gray-900 border border-gray-300 px-6 py-3 rounded-lg shadow-[4px_4px_0px_#d1d5db] hover:shadow-[2px_2px_0px_#d1d5db] transition transform hover:-translate-y-1">
+                        <Download className="mr-2" /> Download .zip
+                    </a>
+                    <a href="https://github.com/realvjy/uilogos.co"
+                        className="flex items-center bg-white text-gray-900 border border-gray-300 px-6 py-3 rounded-lg shadow-[4px_4px_0px_#d1d5db] hover:shadow-[2px_2px_0px_#d1d5db] transition transform hover:-translate-y-1">
+                        <Github className="mr-2" /> Github code
+                    </a>
+                </div>
+            </div>
+        </header>
+    );
 }
