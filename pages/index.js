@@ -1,5 +1,5 @@
 import React from 'react';
-import { Anchor, Ship, Users, Map, Palette, Discord } from 'lucide-react';
+import { Anchor, Ship, Users, Map, Palette, MessageSquare } from 'lucide-react';
 
 export default function DedParWevender() {
   return (
@@ -20,7 +20,7 @@ export default function DedParWevender() {
             rel="noopener noreferrer" 
             className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110"
           >
-            <Discord className="inline-block mr-2" />
+            <MessageSquare className="inline-block mr-2" />
             Join Our Discord Server
           </a>
         </section>
