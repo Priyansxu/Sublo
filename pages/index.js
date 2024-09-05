@@ -1,80 +1,74 @@
 import React from 'react';
-import { Search, Share2 } from 'lucide-react';
+import { Anchor, Ship, Users, Map, Palette, Discord } from 'lucide-react';
 
-export default function GoogleArtsAndCulture() {
+export default function DedParWevender() {
   return (
-    <div className="max-w-md mx-auto bg-white min-h-screen">
-      <header className="flex justify-between items-center p-4 border-b">
-        <button className="text-gray-600">
-          <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-          </svg>
-        </button>
-        <h1 className="text-xl font-semibold">Google Arts & Culture</h1>
-        <button className="text-gray-600">
-          <Search className="w-6 h-6" />
-        </button>
+    <div className="max-w-4xl mx-auto bg-white min-h-screen font-sans">
+      <header className="bg-teal-600 text-white p-6 shadow-lg">
+        <h1 className="text-3xl font-bold mb-2">DedPar Wevender</h1>
+        <p className="text-xl">The Best Pirate Sailers in Discovery</p>
       </header>
 
-      <main className="p-4">
-        <h2 className="text-2xl font-bold mb-4">Who will you invite to dinner?</h2>
-        <p className="text-sm text-gray-600 mb-4">Pick a royal guest and learn about culture</p>
+      <main className="p-6 space-y-8">
+        <section className="text-center">
+          <p className="text-lg mb-4">
+            Discovery? Yes, you heard it right! That's our goal, and we invite you, yes you, to join us and our community and help us grow.
+          </p>
+          <a 
+            href="https://discord.gg/hTVphcJUYX" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+          >
+            <Discord className="inline-block mr-2" />
+            Join Our Discord Server
+          </a>
+        </section>
 
-        <div className="relative mb-4">
-          <img src="/placeholder.svg" alt="Queen Victoria" className="w-full h-48 object-cover rounded-lg" />
-          <div className="absolute bottom-0 left-0 p-4 text-white">
-            <h3 className="text-xl font-bold">Queen Victoria</h3>
-            <p className="text-sm">Fond of ostrich egg omelettes and petit fours</p>
-          </div>
-        </div>
+        <section className="bg-teal-50 rounded-lg p-6 shadow-md">
+          <h2 className="text-2xl font-bold mb-4 text-teal-800">FEATURES</h2>
+          <ul className="space-y-4">
+            <li className="flex items-start">
+              <Anchor className="flex-shrink-0 w-6 h-6 text-teal-600 mr-2" />
+              <p>You can stay in any channels for up to 24 hours and never get disconnected or just connect to a different channel.</p>
+            </li>
+            <li className="flex items-start">
+              <Users className="flex-shrink-0 w-6 h-6 text-teal-600 mr-2" />
+              <p>Our community is friendly and warm to new mascots or pirates.</p>
+            </li>
+            <li className="flex items-start">
+              <Ship className="flex-shrink-0 w-6 h-6 text-teal-600 mr-2" />
+              <p>We support every game with ships, and not only ships.</p>
+            </li>
+            <li className="flex items-start">
+              <Map className="flex-shrink-0 w-6 h-6 text-teal-600 mr-2" />
+              <p>Map Table which can show you the best and most important in our server such as where the support is.</p>
+            </li>
+            <li className="flex items-start">
+              <Palette className="flex-shrink-0 w-6 h-6 text-teal-600 mr-2" />
+              <p>Our Design and gameplay is unique.</p>
+            </li>
+          </ul>
+        </section>
 
-        <div className="flex gap-2 mb-4">
-          <button className="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">Neues Museum</button>
-          <button className="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">Palace of Versailles</button>
-        </div>
-
-        <button className="text-blue-600 text-sm font-semibold mb-8">More historic dinner guests</button>
-
-        <div className="bg-coral-100 p-4 rounded-lg mb-8">
-          <h3 className="text-xl font-bold mb-2">Create your own manga character</h3>
-          <p className="text-sm mb-4">With a little help from Machine Learning</p>
-          <img src="/placeholder.svg" alt="Manga characters" className="w-full h-32 object-cover rounded-lg mb-4" />
-          <img src="/placeholder.svg" alt="Manga sketches" className="w-full h-24 object-cover rounded-lg" />
-        </div>
-
-        <div className="mb-4">
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="font-semibold">Get Some Manga Inspiration</h3>
-            <Share2 className="w-5 h-5 text-gray-600" />
-          </div>
-          <p className="text-sm text-gray-600">Explore the history and culture of Japanese comics</p>
-          <div className="grid grid-cols-3 gap-2 mt-2">
-            <img src="/placeholder.svg" alt="Manga 1" className="w-full h-20 object-cover rounded" />
-            <img src="/placeholder.svg" alt="Manga 2" className="w-full h-20 object-cover rounded" />
-            <img src="/placeholder.svg" alt="Manga 3" className="w-full h-20 object-cover rounded" />
-          </div>
-        </div>
-
-        <div className="mb-4">
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="font-semibold">What is Manga?</h3>
-            <Share2 className="w-5 h-5 text-gray-600" />
-          </div>
-          <p className="text-sm text-gray-600">Go on a cartoon adventure, from Edo-period Japan to today</p>
-          <img src="/placeholder.svg" alt="Drawing manga" className="w-full h-32 object-cover rounded-lg mt-2" />
-        </div>
-
-        <div>
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="font-semibold">More Games to Play</h3>
-            <Share2 className="w-5 h-5 text-gray-600" />
-          </div>
-          <p className="text-sm text-gray-600">Crosswords, coloring, and more</p>
-        </div>
+        <section className="bg-gradient-to-r from-teal-500 to-teal-600 text-white p-6 rounded-lg shadow-md">
+          <h2 className="text-2xl font-bold mb-4">Join Our Adventure</h2>
+          <p className="mb-4">
+            Embark on an exciting journey with DedPar Wevender. Whether you're a seasoned pirate or a newcomer to the seas, there's a place for you in our crew.
+          </p>
+          <a 
+            href="https://discord.gg/hTVphcJUYX" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-block bg-white text-teal-600 font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+          >
+            Set Sail Now!
+          </a>
+        </section>
       </main>
 
-      <footer className="p-4 border-t">
-        <h3 className="font-semibold mb-2">Today's top picks</h3>
+      <footer className="bg-teal-800 text-white p-6 mt-8">
+        <p className="text-center">&copy; 2023 DedPar Wevender. All rights reserved.</p>
       </footer>
     </div>
   );
